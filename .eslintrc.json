@@ -1,43 +1,51 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "exmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "simple-import-sort",
-    "prettier"
-  ],
+  "extends": "next/core-web-vitals",
   "rules": {
-    "quotes": ["error", "double", { "avoidEscape": true }],
-    "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
-    /* disabled to allow `export { default } from 'module'` syntax */
-    "no-restricted-exports": "off",
-
-    "react/jsx-filename-extension": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "react/no-unescaped-entities": "off"
   }
 }
+
+// {
+//   "env": {
+//     "browser": true,
+//     "es2021": true
+//   },
+//   "extends": [
+//     "airbnb",
+//     "airbnb/hooks",
+//     "airbnb-typescript",
+//     "plugin:import/typescript",
+//     "plugin:prettier/recommended"
+//   ],
+//   "parser": "@typescript-eslint/parser",
+//   "parserOptions": {
+//     "exmaFeatures": {
+//       "jsx": true
+//     },
+//     "ecmaVersion": "latest",
+//     "sourceType": "module",
+//     "project": "./tsconfig.json"
+//   },
+//   "plugins": [
+//     "react",
+//     "@typescript-eslint",
+//     "react-hooks",
+//     "simple-import-sort",
+//     "prettier"
+//   ],
+//   "rules": {
+//     "react/no-unescaped-entities": "off",
+//     "quotes": ["error", "double", { "avoidEscape": true }],
+//     "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
+//     /* disabled to allow `export { default } from 'module'` syntax */
+//     "no-restricted-exports": "off",
+
+//     "react/jsx-filename-extension": "off",
+//     "react/jsx-props-no-spreading": "off",
+//     "react/prop-types": "off",
+//     "react/react-in-jsx-scope": "off",
+
+//     "simple-import-sort/imports": "error",
+//     "simple-import-sort/exports": "error"
+//   }
+// }
