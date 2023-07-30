@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --cache ./src",
-    "lint:fix": "eslint --fix ./src",
+    "lint": "next lint",
+    "postbuild": "next-sitemap",
     "prepare": "husky install"
   },
   "dependencies": {
