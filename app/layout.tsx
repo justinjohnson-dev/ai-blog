@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-2xl mx-auto py-10 px-2">
+          <div className="max-w-4xl mx-auto py-6 px-2">
             <header>
               <div className="flex items-center justify-between">
                 <ModeToggle />
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 </nav>
               </div>
             </header>
-            <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+            <main className="px-4 md:px-8 prose prose-xl prose-slate dark:prose-invert mx-auto">
               {children}
             </main>
           </div>
