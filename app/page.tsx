@@ -5,7 +5,7 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <div className="mx-auto">
-      <h1 className="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white md:text-6xl lg:text-6xl mt-10">
+      <h1 className="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white md:text-6xl lg:text-6xl mt-8">
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
           Welcome
         </span>{" "}

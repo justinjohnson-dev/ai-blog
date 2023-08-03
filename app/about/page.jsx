@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="justify-center items-center m-10">
+    <div className="justify-center items-center m-10 mt-8">
       <h1 className="text-4xl font-bold text-center mb-5 mt-12">
         About Our{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
