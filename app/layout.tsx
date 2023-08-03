@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Analytics } from "@/components/analytics";
-
+import Providers from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </header>
             <main className="px-4 md:px-8 prose prose-xl prose-slate dark:prose-invert mx-auto">
-              {children}
+              <Providers>{children}</Providers>
             </main>
           </div>
           <Analytics />
