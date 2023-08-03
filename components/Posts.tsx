@@ -3,6 +3,7 @@
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, forwardRef } from "react";
+import PostSkeleton from "./PostSkeleton";
 
 function Home() {
   const fetchPost = useCallback(async (page: number) => {
@@ -11,18 +12,19 @@ function Home() {
     return posts;
   }, []);
 
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ["posts"],
-    async ({ pageParam = 1 }) => {
-      const posts = await fetchPost(pageParam);
-      return posts;
-    },
-    {
-      getNextPageParam: (_, pages) => {
-        return pages.length + 1;
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } =
+    useInfiniteQuery(
+      ["posts"],
+      async ({ pageParam = 1 }) => {
+        const posts = await fetchPost(pageParam);
+        return posts;
       },
-    },
-  );
+      {
+        getNextPageParam: (_, pages) => {
+          return pages.length + 1;
+        },
+      },
+    );
 
   const lastPostRef = useRef<HTMLLIElement>(null);
   const { ref, entry } = useIntersection({
@@ -45,7 +47,8 @@ function Home() {
           Articles
         </span>
       </h2>
-      {
+      {isLoading && <PostSkeleton />}
+      {!isLoading && (
         <ul className="w-full list-none p-0">
           {_posts?.map((post, i) => {
             if (i === _posts.length - 1)
@@ -53,12 +56,12 @@ function Home() {
             return <ListItem key={post?.id} post={post} />;
           })}
         </ul>
-      }
+      )}
       <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
         {isFetchingNextPage
           ? "Loading more..."
           : (data?.pages.length ?? 0) < 3
-          ? "Load More"
+          ? "Loading Post..."
           : "End of Posts"}
       </button>
     </section>
@@ -77,7 +80,7 @@ const ListItem = forwardRef<HTMLLIElement, Props>(({ post }, ref) => {
   const formattedDate = getFormattedDate(date);
 
   return (
-    <li className="pl-0 mt-4 text-2xl dark:text-white/90">
+    <li className="pl-0 mt-4 text-2xl dark:text-white/90" ref={ref}>
       <Link
         className="underline hover:text-black/70 dark:hover:text-white"
         href={`/posts/${id}`}

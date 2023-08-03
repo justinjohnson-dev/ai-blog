@@ -73,7 +73,6 @@ export async function getPostsMeta(
   page: number = 1,
   limit: number = 5,
 ): Promise<Meta[] | undefined> {
-  console.log("hit");
   const res = await fetch(
     "https://api.github.com/repos/justinjohnson-dev/blogposts/git/trees/main?recursive=1",
     {
