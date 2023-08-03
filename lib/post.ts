@@ -69,7 +69,10 @@ export async function getPostByName(
   return blogPostObj;
 }
 
-export async function getPostsMeta(): Promise<Meta[] | undefined> {
+export async function getPostsMeta(
+  page: number = 1,
+  limit: number = 5,
+): Promise<Meta[] | undefined> {
   const res = await fetch(
     "https://api.github.com/repos/justinjohnson-dev/blogposts/git/trees/main?recursive=1",
     {
@@ -89,9 +92,12 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
     .map((obj) => obj.path)
     .filter((path) => path.endsWith(".mdx"));
 
+  // Paginate files
+  const paginatedFiles = filesArray.slice((page - 1) * limit, page * limit);
+
   const posts: Meta[] = [];
 
-  for (const file of filesArray) {
+  for (const file of paginatedFiles) {
     const post = await getPostByName(file);
     if (post) {
       const { meta } = post;
