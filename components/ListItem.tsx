@@ -1,16 +1,17 @@
 import Link from "next/link";
-import getFormattedDate from "@/lib/getFormattedDate";
+import { getFormattedGitHubDate } from "@/lib/getFormattedDate";
+import { forwardRef } from "react";
 
 type Props = {
   post: Meta;
 };
 
-export default function ListItem({ post }: Props) {
+const ListItem = forwardRef<HTMLLIElement, Props>(({ post }, ref) => {
   const { id, title, description, date } = post;
-  const formattedDate = getFormattedDate(date);
+  const formattedDate = getFormattedGitHubDate(date);
 
   return (
-    <li className="pl-0 mt-4 text-2xl dark:text-white/90">
+    <li className="pl-0 mt-4 text-2xl dark:text-white/90" ref={ref}>
       <Link
         className="underline hover:text-black/70 dark:hover:text-white"
         href={`/posts/${id}`}
@@ -24,4 +25,8 @@ export default function ListItem({ post }: Props) {
       <p className="text-sm mt-1">{formattedDate}</p>
     </li>
   );
-}
+});
+
+ListItem.displayName = "ListItem";
+
+export default ListItem;
