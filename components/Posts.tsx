@@ -69,7 +69,7 @@ function Home() {
 }
 
 import Link from "next/link";
-import getFormattedDate from "@/lib/getFormattedDate";
+import { getFormattedGitHubDate } from "@/lib/getFormattedDate";
 
 type Props = {
   post: Meta;
@@ -77,7 +77,7 @@ type Props = {
 
 const ListItem = forwardRef<HTMLLIElement, Props>(({ post }, ref) => {
   const { id, title, description, date } = post;
-  const formattedDate = getFormattedDate(date);
+  const formattedDate = getFormattedGitHubDate(date);
 
   return (
     <li className="pl-0 mt-4 text-2xl dark:text-white/90" ref={ref}>
